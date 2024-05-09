@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #4b6c92; /* Light gray background */
+        }
+        .navbar {
+            background-color: #176fa1; 
+        }
+        .navbar-nav .nav-link {
+            color: #f1eded; 
+        }
+        .navbar-nav .nav-link:hover {
+            color: #abcdef; 
+        }
+        .container {
+            background-color: #c1a6ce; /* White background for container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(126, 109, 167, 0.1); /* Shadow effect */
+        }
+    
+        .table {
+            width: 100%;
+            overflow-x: auto; 
+        }
+    
+        .table th,
+        .table td {
+            padding: 8px;
+            vertical-align: top;
+        }
+    
+        textarea.form-control {
+            resize: vertical; 
+        }
+    
+        .btn-primary {
+            background-color: #007bff; 
+            border-color: #007bff; 
+        }
+    
+        .btn-primary:hover {
+            background-color: #0056b3; 
+            border-color: #0056b3; 
+        }
+    
+        .btn-primary:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="/">
+            <img src="../images/logo2.PNG" height="30" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/pages/show_bicycles.html">Show Bicycles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/pages/types_bicycles.html">Types of Bicycles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/pages/accessories.html">Accessories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/pages/choose_us.html">Login/Signup</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/pages/contact_us.html">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    <div class="container">
+        <h1 class="display-4 mt-5">Your Cart</h1>
+        <div class="row">
+            <div class="col-md-6">
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="cartItems">
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" class="text-end"><strong>Total:</strong></td>
+                    <td id="cartTotal"></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <button class="btn btn-danger" onclick="clearCart()">CLEAR CART</button>
+    </div>
+    <div class="col-md-6">
+         <div class="mt-5">
+            <h2 class="mb-4">Payment Details</h2>
+            <form onsubmit="return proceedToPay()">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="cardNumber" class="form-label">Card Number</label>
+                    <input type="text" class="form-control" id="cardNumber" required>
+                </div>
+                <div class="mb-3">
+                    <label for="addressLine1" class="form-label">Address Line 1</label>
+                    <input type="text" class="form-control" id="addressLine1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="addressLine2" class="form-label">Address Line 2</label>
+                    <input type="text" class="form-control" id="addressLine2">
+                </div>
+                <div class="mb-3">
+                    <label for="postcode" class="form-label">Postcode</label>
+                    <input type="text" class="form-control" id="postcode" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contactEmail" class="form-label">Contact Email</label>
+                    <input type="email" class="form-control" id="contactEmail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contactNumber" class="form-label">Contact Number</label>
+                    <input type="tel" class="form-control" id="contactNumber" required>
+                </div>
+                <button type="submit" class="btn btn-primary">PAY TO PROCEED ORDER </button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            
+            let cartItems = document.getElementById('cartItems');
+            let cartTotal = 0;
+
+            cart.forEach(item => {
+                let row = document.createElement('tr');
+                let itemName = document.createElement('td');
+                itemName.textContent = item.productName;
+                let itemQuantity = document.createElement('td');
+                let quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.min = '1';
+                quantityInput.value = item.quantity;
+                quantityInput.addEventListener('change', function () {
+                    updateQuantity(item.productName, parseInt(this.value));
+                });
+                itemQuantity.appendChild(quantityInput);
+                let itemPrice = document.createElement('td');
+                itemPrice.textContent = item.price;
+                row.appendChild(itemName);
+                row.appendChild(itemQuantity);
+                row.appendChild(itemPrice);
+                cartItems.appendChild(row);
+
+                
+                cartTotal += parseInt(item.price.replace('£', '')) * item.quantity;
+            });
+
+           
+            let totalCell = document.getElementById('cartTotal');
+            totalCell.textContent = '£' + cartTotal.toFixed(2);
+        });
+
+        function clearCart() {
+           
+            localStorage.removeItem('cart');
+          
+            location.reload();
+        }
+        function proceedToPay() {
+        clearCart(); 
+        alert('Thanks for your order! Your order is now processing.');
+        return false; 
+        }
+
+        function updateQuantity(productName, quantity) {
+            
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            
+            cart.forEach(item => {
+                if (item.productName === productName) {
+                    item.quantity = quantity;
+                }
+            });
+
+            // Save the updated cart back to local storage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Recalculate and update the total price
+            let cartTotal = 0;
+            cart.forEach(item => {
+                cartTotal += parseInt(item.price.replace('£', '')) * item.quantity;
+            });
+            let totalCell = document.getElementById('cartTotal');
+            totalCell.textContent = '£' + cartTotal.toFixed(2);
+        }
+        function validateForm() {
+            // Card number validation
+            var cardNumberInput = document.getElementById('cardNumber');
+            var cardNumber = cardNumberInput.value.trim();
+            var cardNumberError = document.getElementById('cardNumberError');
+            if (!/^\d{16}$/.test(cardNumber)) {
+                cardNumberError.textContent = 'Please enter a valid 16-digit card number.';
+                cardNumberInput.classList.add('is-invalid');
+                return false;
+            } else {
+                cardNumberError.textContent = '';
+                cardNumberInput.classList.remove('is-invalid');
+            }
+
+            // Email validation
+            var emailInput = document.getElementById('contactEmail');
+            var email = emailInput.value.trim();
+            var emailError = document.getElementById('emailError');
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                emailInput.classList.add('is-invalid');
+                return false;
+            } else {
+                emailError.textContent = '';
+                emailInput.classList.remove('is-invalid');
+            }
+
+           
+
+            return true; // Form submission allowed if all validations pass
+        }
+        function addToCartFromAccessories(itemName, itemPrice) {
+       
+        const newItem = {
+            productName: itemName,
+            price: '£' + itemPrice,
+            quantity: 1 
+        };
+
+        
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      
+        const existingItem = cart.find(item => item.productName === itemName);
+
+        if (existingItem) {
+            
+            existingItem.quantity += 1;
+        } else {
+            
+            cart.push(newItem);
+        }
+
+       
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    </script>
+</body>
+
+</html>
+
+

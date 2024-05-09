@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Show Bicycles</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/style/main.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
+  <!-- End of Google Font -->
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="/">
+        <img src="../images/logo2.PNG" height="30" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/show_bicycles.html">Show Bicycles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/types_bicycles.html">Types of Bicycles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/accessories.html">Accessories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/choose_us.html">Login/Signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/contact_us.html">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h1 class="display-4 mt-5">Show Bicycles...</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+      <!-- Card 1 - Nagasawa Special NJS -->
+      <div class="col mt-5">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../images/photo-1485965120184-e220f721d03e.avif" alt="Card image cap" width="180" height="190">
+          <div class="card-body">
+            <h5 class="card-title">Nagasawa Special NJS</h5>
+            <p class="card-text">Sleek carbon fiber road bike designed for speed and precision handling. Great for exercising.</p>
+            <button class="btn btn-primary" onclick="addToCart('Nagasawa Special NJS','£800.00')">Add to Cart</button>
+            <span class="price">£800.00</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 - BiKEDEN -->
+      <div class="col mt-5">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../images/photo-1507035895480-2b3156c31fc8.avif" alt="Card image cap" width="180" height="190">
+          <div class="card-body">
+            <h5 class="card-title">BiKEDEN</h5>
+            <p class="card-text">Recumbent trike with ergonomic seat, offering comfort and stability with great gear control.</p>
+            <button class="btn btn-primary" onclick="addToCart('BiKEDEN','£1000')">Add to Cart</button>
+            <span class="price">£1000</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 - Bianchi Oltre Comp -->
+      <div class="col mt-5">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../images/photo-1532298229144-0ec0c57515c7.avif" alt="Card image cap" width="180" height="190">
+          <div class="card-body">
+            <h5 class="card-title">Bianchi Oltre Comp</h5>
+            <p class="card-text">This Oltre Rival model is incredibly aerodynamic with the same principles as the RC model. </p>
+            <button class="btn btn-primary" onclick="addToCart('Bianchi Oltre Comp','£1000')">Add to Cart</button>
+            <span class="price">£1000</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 - Cannondale Synapse -->
+      <div class="col mt-5">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../images/image3.png" alt="Card image cap" width="180" height="190">
+          <div class="card-body">
+            <h5 class="card-title">Cannondale Synapse</h5>
+            <p class="card-text">Classic Dutch-style bike with a step-through frame and charming basket with leather seats.</p>
+            <button class="btn btn-primary" onclick="addToCart('Cannondale Synapse','£1000')">Add to Cart</button>
+            <span class="price">£1000</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5 - Cannondale NewHoz -->
+      <div class="col mt-5">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../images/bluebike.png" alt="Card image cap" width="180" height="190">
+          <div class="card-body">
+            <h5 class="card-title">Cannondale NewHoz</h5>
+            <p class="card-text">Recumbent trike with ergonomic seat, offering comfort and stability while allowing easy exercising.</p>
+            <button class="btn btn-primary" onclick="addToCart('Cannondale NewHoz','£1000')">Add to Cart</button>
+            <span class="price">£1000</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 6 - MTB Cannondale Scalpel -->
+      <div class="col mt-5">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../images/image1.png" alt="Card image cap" width="180" height="190">
+          <div class="card-body">
+            <h5 class="card-title">MTB Cannondale Scalpel</h5>
+            <p class="card-text">A whole new breed of hardtail XC bike, designed to lighten you up the climbs.</p>
+            <button class="btn btn-primary" onclick="addToCart('MTB Cannondale Scalpel','£1000')">Add to Cart</button>
+            <span class="price">£1000</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 7 - Bicycle (Full Clipping Path) -->
+      <div class="col mt-5">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../images/image2.png" alt="Card image cap" width="180" height="190">
+          <div class="card-body">
+            <h5 class="card-title">Bicycle (Full Clipping Path)</h5>
+            <p class="card-text">Fixie style black bicycle with full clipping path. Features electric powered motors to assist.</p>
+            <button class="btn btn-primary" onclick="addToCart('Bicycle (Full Clipping Path)','£1000')">Add to Cart</button>
+            <span class="price">£1000</span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 8 - Racing Touring Bicycle -->
+      <div class="col mt-5">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../images/redbike.png" alt="Card image cap" width="180" height="190">
+          <div class="card-body">
+            <h5 class="card-title">Racing Touring Bicycle</h5>
+            <p class="card-text">This is a racing touring bicycle that not only is comfortable, it is also lightweight and fast.</p>
+            <button class="btn btn-primary" onclick="addToCart('Racing Touring Bicycle','£1000')">Add to Cart</button>
+            <span class="price">£1000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container d-flex p-3">
+    <p class="mt-2">
+      © Vicycle 2024. All Rights Reserved.
+    </p>
+    <div class="d-flex text-bottom ms-auto mt-2">
+      <a href="https://wa.me" class="text-secondary">
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 44.3 0 23.1 17.8 45.5 21.8 52.3 4.2 7.3 26.5 46.2 68.6 68.7 39.1 21.3 70.8 28.6 81.8 32.2 9.6 3 11.7 3.4 16.8 2.8 5.1-.6 11.1-1.7 16.3-5 5.3-3.3 6.5-5.8 4.2-8.6z"></path></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function addToCart(productName, price) {
+      // Fetch the existing cart data from local storage or initialize an empty array
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Check if the product is already in the cart
+      let found = cart.some(item => item.productName === productName);
+
+      if (found) {
+        // If the product is already in the cart, increase its quantity
+        cart.forEach(item => {
+          if (item.productName === productName) {
+            item.quantity++;
+          }
+        });
+      } else {
+        // If the product is not in the cart, add it with quantity 1
+        cart.push({ productName: productName, price: price, quantity: 1 });
+      }
+
+      // Save the updated cart back to local storage
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      // Redirect to the cart page
+      window.location.href = '/pages/add_to_cart.html';
+    }
+  </script>
+</body>
+
+</html>
